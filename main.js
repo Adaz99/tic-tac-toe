@@ -3,6 +3,9 @@ const restartGame = document.querySelector(".restart");
 const startGame = document.querySelector(".startGame");
 const statusText = document.querySelector(".statusText");
 const music = document.querySelector(".musicForGame");
+const clickSound = new Audio(
+  "./audio/Y2Mate.is - Click - Sound Effect (HD)-Uzj3CD0FUhA-160k-1655326584613.mp3"
+);
 const winnerSound = new Audio(
   "./audio/Y2Mate.is - WIN sound effect no copyright-rr5CMS2GtCY-160k-1659928339399.mp3"
 );
@@ -27,7 +30,6 @@ const winConditions = [
   ["0", "4", "8"],
   ["2", "4", "6"],
 ];
-
 // startPlaying function which allows "X" or "O" to be displayed using a click function (starts the game when the button is clicked)(allowing each cell/box to be clicked)
 const startPlaying = () => {
   boxes.forEach((cells) => {
@@ -36,7 +38,6 @@ const startPlaying = () => {
     music.play();
   });
 };
-
 // Allows to switch from "X" to "O"
 // ? if its true to will do the next one
 function playerChange() {
@@ -54,7 +55,6 @@ const cellPlayed = (clickedBox, clickedBoxId) => {
   clickedBox.innerHTML = currentPlayer;
   // console.log(gameState);
 };
-
 
 // checking the gamestate against the winningconditions so that a win or draw can be produced
 const checkResult = () => {
@@ -87,7 +87,7 @@ const checkResult = () => {
   if (roundDraw && roundWon === false) {
     drawGameSound.play(), alert(drawMessage);
   }
-}
+};
 // Getting the cell Id and what box has been clicked
 const cellClicked = (event) => {
   playerChange();
@@ -107,8 +107,6 @@ const cellClicked = (event) => {
   clickSound.play();
 };
 
-
-
 // create a restart function which clears the board (add a click event for the button, once the button is clicked set the boxes to = "" )
 const restart = () => {
   boxes.forEach((box) => {
@@ -118,7 +116,6 @@ const restart = () => {
     statusText.innerHTML = `Player X's turn`;
   });
 };
-
 
 startGame.addEventListener("click", startPlaying);
 restartGame.addEventListener("click", restart);
