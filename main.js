@@ -42,6 +42,26 @@ function playerChange() {
   // console.log(currentPlayer);
 }
 
+// Getting the cell Id and what box has been clicked
+const cellClicked = (event) => {
+  playerChange();
+  const clickedBoxId = event.target.id;
+  const clickedBox = event.target;
+  // console.log(event.target);
+  // console.log(event.target.id);
+  // Store the clicked boxes ID and check if they have been clicked
+  // Only want to update the cell if its empty
+  if (gameState[clickedBoxId] !== "") {
+    return;
+  }
+  // passing in the cellPlayed function so that the gamestate can be stored
+  cellPlayed(clickedBox, clickedBoxId);
+  // check the game result against game state each time a cell is clicked
+  checkResult();
+  clickSound.play();
+};
+
+
 
 // create a restart function which clears the board (add a click event for the button, once the button is clicked set the boxes to = "" )
 const restart = () => {
@@ -52,3 +72,7 @@ const restart = () => {
     statusText.innerHTML = `Player X's turn`;
   });
 };
+
+
+startGame.addEventListener("click", startPlaying);
+restartGame.addEventListener("click", restart);
