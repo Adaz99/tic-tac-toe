@@ -10,6 +10,7 @@ body {
     grid-template-columns: repeat(3, auto);
     width: 306px;
     margin: 10px auto;
+    color: black;
   }
   .box {
     width: 100px;
