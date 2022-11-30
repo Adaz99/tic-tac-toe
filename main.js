@@ -48,12 +48,31 @@ function playerChange() {
   // console.log(currentPlayer);
 }
 
+// Getting the cell Id and what box has been clicked
+const cellClicked = (event) => {
+  playerChange();
+  const clickedBoxId = event.target.id;
+  const clickedBox = event.target;
+  console.log(event.target);
+  console.log(event.target.id);
+  // Store the clicked boxes ID and check if they have been clicked
+  // Only want to update the cell if its empty
+  if (gameState[clickedBoxId] !== "") {
+    return;
+  }
+  // passing in the cellPlayed function so that the gamestate can be stored
+  cellPlayed(clickedBox, clickedBoxId);
+  // check the game result against game state each time a cell is clicked
+  checkResult();
+  clickSound.play();
+};
+
 // keeps track of the cells that have been clicked and and stores either an "X" or "O" it into gameState as an array so we can later check against win conditions
 // also change the cell content with "X" or "O"
 const cellPlayed = (clickedBox, clickedBoxId) => {
   gameState[clickedBoxId] = currentPlayer;
   clickedBox.innerHTML = currentPlayer;
-  // console.log(gameState);
+  console.log(gameState);
 };
 
 // checking the gamestate against the winningconditions so that a win or draw can be produced
@@ -83,29 +102,13 @@ const checkResult = () => {
   if (roundWon) {
     winnerSound.play(), alert(winningMessage);
   }
+  // If the conditions are met for a draw then an alert will display with a draw sound
   // console.log(winningMessage);
   if (roundDraw && roundWon === false) {
     drawGameSound.play(), alert(drawMessage);
   }
 };
-// Getting the cell Id and what box has been clicked
-const cellClicked = (event) => {
-  playerChange();
-  const clickedBoxId = event.target.id;
-  const clickedBox = event.target;
-  // console.log(event.target);
-  // console.log(event.target.id);
-  // Store the clicked boxes ID and check if they have been clicked
-  // Only want to update the cell if its empty
-  if (gameState[clickedBoxId] !== "") {
-    return;
-  }
-  // passing in the cellPlayed function so that the gamestate can be stored
-  cellPlayed(clickedBox, clickedBoxId);
-  // check the game result against game state each time a cell is clicked
-  checkResult();
-  clickSound.play();
-};
+
 
 // create a restart function which clears the board (add a click event for the button, once the button is clicked set the boxes to = "" )
 const restart = () => {
