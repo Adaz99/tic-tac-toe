@@ -3,7 +3,12 @@ const restartGame = document.querySelector(".restart");
 const startGame = document.querySelector(".startGame");
 const statusText = document.querySelector(".statusText");
 const music = document.querySelector(".musicForGame");
-
+const winnerSound = new Audio(
+  "./audio/Y2Mate.is - WIN sound effect no copyright-rr5CMS2GtCY-160k-1659928339399.mp3"
+);
+const drawGameSound = new Audio(
+  "./audio/Y2Mate.is - DJ Scratch Sound Effect (HD)-kJA-cxaBJlc-128k-1659542481794.mp3"
+);
 
 let currentPlayer = "O";
 
