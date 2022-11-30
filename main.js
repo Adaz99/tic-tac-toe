@@ -42,6 +42,38 @@ function playerChange() {
   // console.log(currentPlayer);
 }
 
+// checking the gamestate against the winningconditions so that a win or draw can be produced
+const checkResult = () => {
+  const winningMessage = `Player ${currentPlayer} has won!`;
+  let roundWon = false;
+  let roundDraw = !gameState.includes("");
+  // looping through the win combos
+  //It will go through each inner array in win conditions
+  for (let index = 0; index < winConditions.length; index++) {
+    //loop through all the winning combos and check if the result is a win against current gamestate
+    // storing each array within a temp variable
+    const winCombo = winConditions[index];
+    // console.log(winConditions[index])
+    let a = gameState[winCombo[0]];
+    let b = gameState[winCombo[1]];
+    let c = gameState[winCombo[2]];
+    // console.log([winCombo[1]]);
+    // checking if the gameState values are currently empty or not if they are empty then continue the game until we have a winner or draw
+    if (a === "" || b === "" || c === "") continue;
+    // if they are not empty spaces then that means the spaces are full and they are the same character e.g "X X X" someone has one
+    if (a === b && b === c) {
+      roundWon = true;
+    }
+  }
+  // if the conditions are met for a win gameState matches winningconditions alert with winning message with appear + sound
+  if (roundWon) {
+    winnerSound.play(), alert(winningMessage);
+  }
+  // console.log(winningMessage);
+  if (roundDraw && roundWon === false) {
+    drawGameSound.play(), alert(drawMessage);
+  }
+}
 // Getting the cell Id and what box has been clicked
 const cellClicked = (event) => {
   playerChange();
