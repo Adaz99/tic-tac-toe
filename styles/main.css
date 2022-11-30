@@ -50,4 +50,14 @@ body {
     display: block;
     text-align: center;
   }
+}
+@media screen and (min-width: 1024px) {
+  .gameDisplay {
+    background-color: #39fa7c;
+    color: #000000;
+  }
+  body {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(9, 9, 121) 5%, rgb(0, 212, 255) 100%);
+  }
 }/*# sourceMappingURL=main.css.map */
