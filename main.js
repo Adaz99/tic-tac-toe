@@ -42,6 +42,15 @@ function playerChange() {
   // console.log(currentPlayer);
 }
 
+// keeps track of the cells that have been clicked and and stores either an "X" or "O" it into gameState as an array so we can later check against win conditions
+// also change the cell content with "X" or "O"
+const cellPlayed = (clickedBox, clickedBoxId) => {
+  gameState[clickedBoxId] = currentPlayer;
+  clickedBox.innerHTML = currentPlayer;
+  // console.log(gameState);
+};
+
+
 // checking the gamestate against the winningconditions so that a win or draw can be produced
 const checkResult = () => {
   const winningMessage = `Player ${currentPlayer} has won!`;
