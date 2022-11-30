@@ -41,3 +41,14 @@ function playerChange() {
 
   // console.log(currentPlayer);
 }
+
+
+// create a restart function which clears the board (add a click event for the button, once the button is clicked set the boxes to = "" )
+const restart = () => {
+  boxes.forEach((box) => {
+    (box.innerHTML = ""),
+      (currentPlayer = ""),
+      (gameState = ["", "", "", "", "", "", "", "", ""]);
+    statusText.innerHTML = `Player X's turn`;
+  });
+};
